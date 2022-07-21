@@ -4,6 +4,10 @@ import Card from '../UIComp/Card';
 
 export default function ExpenseItem(props) {
 
+const clickHandler = () => {
+  console.log("Hello")
+}
+
   return (
     <Card className='expense-item'>
       <ExpenseDate date={props.date}/>
@@ -11,6 +15,7 @@ export default function ExpenseItem(props) {
       <h2>{props.title}</h2>
       <div className='expense-item__price'>${props.amount}</div>
       </div>
+      <button onClick={clickHandler}>Change title</button>
     </Card>
   );
 }
