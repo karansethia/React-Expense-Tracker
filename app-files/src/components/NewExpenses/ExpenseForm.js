@@ -3,35 +3,46 @@ import { useState } from 'react'
 export default function ExpenseForm(){
 
     // ! use this method if you want to analyze state for every particular input seperately
-    /* const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredTitle, setEnteredTitle] = useState('');
        const [enteredAmount, setEnteredAmount] = useState('');
        const [enteredDate, setEnteredDate] = useState('');
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
     }
-    */
-   // ! Using a single state to handle all the user input
-   // todo use this if one input depends on another
+    const amountChangeHandler = (event) => {
+        setEnteredAmount(event.target.value);
+    }
+    const dateChangeHandler = (event) => {
+        setEnteredDate(event.target.value);
+    }
+   /*
+   ! Using a single state to handle all the user input
+   ? Object Updation Aproach
+   * Function Updation Aproach (Use this if your current state depends on previous)    
    const [userInput, setUserInput] = useState({
         enteredTitle : '',
         enteredAmount : '',
         enteredDate : ''
    });
    const titleChangeHandler = (event) => {
-    setUserInput({
-        ...userInput,
-        enteredTitle : event.target.value
-    })  }
+   * setUserInput({ ...userInput, enteredTitle : event.target.value }) 
+   ? setUserInput((prevState) => {
+   ? return { ...prevState,enteredTitle: event.target.value}
+   })
+ }
    const amountChangeHandler = (event) => {
-    setUserInput({
-        ...userInput,
-        enteredAmount : event.target.value
-    })  }
+   * setUserInput({ ...userInput, enteredAmount : event.target.value }) 
+   ? setUserInput((prevState) => {
+   ? return { ...prevState,enteredAmount: event.target.value}
+   })
+ }
    const dateChangeHandler = (event) => {
-    setUserInput({
-        ...userInput,
-        enteredDate : event.target.value
-    })  }
+  * setUserInput({ ...userInput, enteredDate : event.target.value }) 
+  ? setUserInput((prevState) => {
+   ? return { ...prevState,enteredDate: event.target.value}
+   })
+ }
+ */
 
     return <form>
         <div className='new-expense__controls'>
