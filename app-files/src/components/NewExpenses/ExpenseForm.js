@@ -15,10 +15,11 @@ export default function ExpenseForm(){
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
     }
+    // ! Using a single state to handle all the user input (CODE HIDDEN)
    /*
-   ! Using a single state to handle all the user input
-   ? Object Updation Aproach
-   * Function Updation Aproach (Use this if your current state depends on previous)    
+
+   * Object Updation Aproach
+   ? Function Updation Aproach (Use this if your current state depends on previous)    
    const [userInput, setUserInput] = useState({
         enteredTitle : '',
         enteredAmount : '',
@@ -44,19 +45,32 @@ export default function ExpenseForm(){
  }
  */
 
-    return <form>
+    const submitHandler = (event) => {
+        event.preventDefault();
+        const expenseData = {
+            title : enteredTitle,
+            amount : enteredAmount,
+            date : new Date(enteredDate)
+        }
+        console.log(expenseData);
+        setEnteredTitle('')
+        setEnteredAmount('')
+        setEnteredDate('')
+    };
+
+    return <form onSubmit={submitHandler}>
         <div className='new-expense__controls'>
         <div className='new-expense__control'>
             <label>Title</label>
-            <input type='text' onChange={titleChangeHandler} />
+            <input type='text' value={enteredTitle} onChange={titleChangeHandler} />
         </div>
         <div className='new-expense__control'>
             <label>Amount</label>
-            <input type='number' min='0.01'  onChange={amountChangeHandler}/>
+            <input type='number' value={enteredAmount} onChange={amountChangeHandler}/>
         </div>
         <div className='new-expense__control'>
             <label>Date</label>
-            <input type='date' min='2021-01-01'  onChange={dateChangeHandler}/>
+            <input type='date' min='2021-01-01' value={enteredDate}  onChange={dateChangeHandler}/>
         </div>
         </div>
         <div className='new-expense__actions'>
