@@ -1,6 +1,6 @@
 import './ExpenseForm.css'
 import { useState } from 'react'
-export default function ExpenseForm(){
+export default function ExpenseForm(props){
 
     // ! use this method if you want to analyze state for every particular input seperately
     const [enteredTitle, setEnteredTitle] = useState('');
@@ -52,7 +52,7 @@ export default function ExpenseForm(){
             amount : enteredAmount,
             date : new Date(enteredDate)
         }
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData);
         setEnteredTitle('')
         setEnteredAmount('')
         setEnteredDate('')
