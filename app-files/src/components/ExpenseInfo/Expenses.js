@@ -22,6 +22,8 @@ export default function Expenses(props){
        </div>
    ); 
 }
+
+
  /* 
  ! Hard Coded data down below is not useful so we use Array.map method
  <ExpenseItem
