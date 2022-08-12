@@ -35,4 +35,5 @@ export default function Expenses(props){
  title={props.items[1].title}
  amount={props.items[1].amount}
  date={props.items[1].date}
-></ExpenseItem> */
+></ExpenseItem> 
+*/
