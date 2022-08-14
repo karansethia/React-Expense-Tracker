@@ -48,5 +48,14 @@ const addExpenseHandler = expense => {
     React.createElement(Expenses, { item: expenses })
   );
 */
+/*
+* ...prevstate in React
+prevState is a name that you have given to the argument passed to setState callback function. 
+What it holds is the value of state before the setState was triggered by React; 
+Since setState does batching, its sometimes important to know what the 
+previous state was when you want to update the new state based on the previous state value.
+So if multiple setState calls are updating the same state, batching setState calls may lead 
+to incorrect state being set. 
+*/
   }
 export default App;
