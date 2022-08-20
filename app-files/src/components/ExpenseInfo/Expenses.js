@@ -1,30 +1,43 @@
 import ExpenseItem from "./ExpenseItem";
-import './Expenses.css'
+import "./Expenses.css";
 import Card from "../UIComp/Card";
 import ExpensesFilter from "./ExpensesFilter";
-import { useState } from 'react'
+import { useState } from "react";
 
-export default function Expenses(props){
-  const [filteredYear, setFilteredYear] = useState('2020')
+export default function Expenses(props) {
+  const [filteredYear, setFilteredYear] = useState("2020");
   const filterChangeHandler = (selectedYear) => {
-    setFilteredYear(selectedYear)
+    setFilteredYear(selectedYear);
     console.log(selectedYear);
+  };
+  const filteredExpenses = props.items.filter(expenseobj => {
+    return expenseobj.date.getFullYear().toString() === filteredYear;
+  });
+  let expensesData = <p>No Expense found, Sir</p>;
+  if(filteredExpenses.length > 0){
+    expensesData = filteredExpenses.map((expenseparam) => (
+      <ExpenseItem
+        key={expenseparam.id}
+        title={expenseparam.title}
+        amount={expenseparam.amount}
+        date={expenseparam.date}
+      />
+    ));
   }
-
-   return (
-       <div>
-        <ExpensesFilter selected={filteredYear} onFilterChange={filterChangeHandler}/>
-       <Card className="expenses">
-        {props.items.map(expenseparam => (
-          <ExpenseItem title = {expenseparam.title} amount = {expenseparam.amount} date={expenseparam.date} />
-        ))}
-       </Card>
-       </div>
-   ); 
+  return (
+    <div>
+      <ExpensesFilter
+        selected={filteredYear}
+        onFilterChange={filterChangeHandler}
+      />
+      <Card className="expenses">
+        {expensesData}
+      </Card>
+    </div>
+  );
 }
 
-
- /* 
+/* 
  ! Hard Coded data down below is not useful so we use Array.map method
  <ExpenseItem
  title={props.items[0].title}
@@ -36,4 +49,16 @@ export default function Expenses(props){
  amount={props.items[1].amount}
  date={props.items[1].date}
 ></ExpenseItem> 
+*/
+/*
+! One way of adding conditional content in React
+{filteredExpenses.length === 0 && <p>No Expense found, Sir</p>}
+        {filteredExpenses.length > 0 && filteredExpenses.map((expenseparam) => (
+          <ExpenseItem
+            key={expenseparam.id}
+            title={expenseparam.title}
+            amount={expenseparam.amount}
+            date={expenseparam.date}
+          />
+        ))}
 */
