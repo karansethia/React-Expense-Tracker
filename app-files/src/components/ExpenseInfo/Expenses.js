@@ -1,4 +1,4 @@
-import ExpenseItem from "./ExpenseItem";
+//import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../UIComp/Card";
 import ExpensesFilter from "./ExpensesFilter";
