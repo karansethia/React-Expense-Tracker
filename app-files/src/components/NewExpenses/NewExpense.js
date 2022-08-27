@@ -4,7 +4,7 @@ import ExpenseForm from "./ExpenseForm"
 
 export default function NewExpense(props){
     const saveExpenseDataHandler = (enteredExpenseData) => {
-       const expenseData = { ...enteredExpenseData,
+       const expenseData = { ...enteredExpenseData,  // copying previous object key value pairs
         id: Math.random().toString()
        }
        props.onAddExpense(expenseData)
