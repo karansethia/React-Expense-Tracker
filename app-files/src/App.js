@@ -58,4 +58,6 @@ So if multiple setState calls are updating the same state, batching setState cal
 to incorrect state being set. 
 */
   }
+
+  // Completed React App
 export default App;
